@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>HTML</title>
+    <meta charset="utf-8">
+  </head>
+  <body ng-app="cng" ng-controller="numbersController">
+    <table class="table table-striped table-hover table-condensed">
+    	<thead>
+    		<tr>
+    			<th>Rectangular</th>
+    			<th>Módulo</th>
+    			<th>Ángulo</th>
+    		</tr>
+    	</thead>
+    	<tr ng-repeat="x in numbers">
+    		<td>
+    			<span>
+    				{{x.real.toString()}} + {{x.imaginary.toString()}}
+    				<i>i</i>
+    			</span>
+    		</td>
+    		<td>{{modulus(x)}}</td>
+    		<td></td>
+    	</tr>
+    </table>
+    <script>
+    	var app = angular.module("cng", []);
+    	app.controller("numbersController", function($scope){
+    		$scope.numbers = [
+    			{real: 5, imaginary: 10},
+    			{real: 35, imaginary: 18}
+    		];
+    		$scope.modulus = function(number){
+    			var a = Math.pow(number.real, 2);
+    			var b = Math.pow(number.imaginary, 2);
+    			return Math.sqrt(a + b);
+    		};
+    	});
+    </script>
+  </body>
+</html>
